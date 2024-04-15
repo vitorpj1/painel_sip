@@ -1,0 +1,42 @@
+<style>
+    @media only screen and (max-width: 600px) {
+        .col-6{
+            width: 100%;
+    }
+}
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/css/login.css">
+<body>
+    <div class="login-main">
+        <div class="box-login">
+            <div>
+                <h1>LOGIN PAINEL ADMIN</h1>
+            </div>
+            <br><br>
+            <form action="/authenticateadmin" method="post">
+                <div class="input-box">
+                    <label for="" class="form-label">Login</label><br>
+                    <input type="text" class="" name="usuario" required>
+                </div>
+                <div class="input-box">
+                    <label for="" class="">Senha</label><br>
+                    <input type="password" class="" name="senha" required>
+                </div><br>
+                <div class="">
+                    <input type="submit" class="btn-login" name="acao" value="Entrar">
+                </div>                            
+            </form>
+            <br>
+            <hr>
+            <br>
+            <div style="text-align: center;">
+                <p>© EQUIPE 404-ERROR</p>
+            </div>
+            <br>
+        </div>
+    </div>
+</body>

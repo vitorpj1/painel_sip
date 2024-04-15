@@ -1,0 +1,36 @@
+<%- include('../partials/header_admin.ejs') %>
+<div class="row">
+    <div class="element">
+        <h1> <i class="fa-solid fa-user-plus"></i> Criar Usuario</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="element">
+        <h1>Criar usuario </h1>
+        <br><br>
+        <form action="/criar-usuario" method="POST">
+            <div class="">
+                <label for="">Usuario</label><br>
+                <input type="text" name="usuario">
+            </div>
+            <div class="">
+                <label for="">Senha</label><br>
+                <input type="password" name="senha">
+            </div>
+            <div class="">
+                <label for="">Usuario SIP</label><br>
+                <input type="text" name="usuariosip">
+            </div>
+            <div class="">
+                <label for="">Senha SIP</label><br>
+                <input type="password" name="senhasip">
+            </div>
+            <br>
+            <div class="">
+                <input type="submit" value="Criar usuario">
+            </div>
+        </form>
+    </div>
+</div>
+
+<%- include('../partials/footer.ejs') %>

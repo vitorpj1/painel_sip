@@ -1,0 +1,26 @@
+*{
+    font-family: "Inter", sans-serif;
+}
+input[type=text],input[type=password]{
+    border-radius: 0px;
+}
+.btn{
+    border-radius: 0px;
+}
+cores{
+    /* fundo */
+    color: #191E23;
+    /* fundo elementos */
+    color: #262B2F;
+    /* verde */
+    color: #25D398;
+    /* rosa */
+    color: #FB4A7C;
+    /* laranja */
+    color: #FF8248;
+    /* azul */
+    color: #2F5597;
+}
+.container-fluid{
+    padding: 10px 10px;
+}

@@ -1,0 +1,28 @@
+<%- include('../partials/header_admin.ejs') %>
+<div class="row">
+    <div class="element">
+        <h1> <i class="fa-solid fa-coins"></i> Adicionar Saldo</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="element">
+        <h1>Adicionar Saldo </h1>
+        <br><br>
+        <form action="/adicionar-saldo" method="POST">
+            <div class="">
+                <label for="">Usuario</label><br>
+                <input type="text" name="usuario">
+            </div>
+            <div class="">
+                <label for="">Saldo</label><br>
+                <input type="text" name="saldo">
+            </div>
+            <br>
+            <div class="">
+                <input type="submit" value="Criar usuario">
+            </div>
+        </form>
+        <br><br><br>
+    </div>
+</div>
+<%- include('../partials/footer.ejs') %>
