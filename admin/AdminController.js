@@ -52,7 +52,7 @@ router.post('/criar-usuario',authadmin,(request,response)=>{
         usuariosip:usuariosip,
         senhasip:senhasip
     }).then(()=>{
-        response.redirect('/admin')
+        response.redirect('/painel')
     })
 })
 
@@ -69,9 +69,9 @@ router.post('/adicionar-saldo',authadmin,(request,response)=>{
             usuario:usuario
         }
     }).then(()=>{
-        response.redirect('/admin')
+        response.redirect('/painel')
     }).catch((error)=>{
-        response.redirect('/admin')
+        response.redirect('/painel')
     })
 
     
