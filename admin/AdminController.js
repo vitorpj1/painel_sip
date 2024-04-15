@@ -4,6 +4,7 @@ const authadmin = require('../middlewares/authadmin')
 
 //MODEL
 const Admin = require('./Admin')
+const Usuario = require('../usuario/Usuario')
 
 router.get('/painel',authadmin,(request,response)=>{
     response.render('admin/painel',{
