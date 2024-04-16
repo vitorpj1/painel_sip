@@ -83,30 +83,22 @@ router.get('/home',auth,(request,response)=>{
     await sleep(1000);
     await browser.close();
     let element = rows[1]
-
-
     let saldo = element.replace('$','').replace(' ','')
+    let saldoeditadoo =  saldo.replace('.','').replace(',','.')
+    let saldoconvertido = parseFloat(saldoeditadoo)   
     let saldoConvertido = parseFloat(saldo)
-    
-
-    //console.log('Saldo atual real: ' + saldo)
-    //console.log('Saldo atual com 20% a mais: ' + novosaldo.toFixed(2)) */
-
+    let acrescimo = (saldoconvertido + ( saldoconvertido * 0.3333))
+    let valorfinal = acrescimo.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
     //VERIFICA SE O SALDO É NEGATIVO
     if(saldoConvertido < 0){
         response.redirect('/saldo-insuficiente')
     }else{
-        let novosaldo = Math.round(((saldoConvertido * 0.3333) + saldoConvertido)).toFixed(2).replace('.',',')
-
         response.render('home',{
             saldoapi:saldo,
-            saldoeditado: novosaldo,
+            saldoeditado: valorfinal,
             saldodb:saldodb
-        })
-        
+        })        
     }
-    
-    
 })();
 })
 

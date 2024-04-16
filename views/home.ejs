@@ -11,11 +11,7 @@
         <h1 style="color: #25D398;">  R$ <span id="saldo"> 
 
 
-            <% if(saldodb > saldoapi){%>
-                <%= saldoapi %> 
-            <%}else{%>
-                <%= saldoeditado %>
-            <%}%>
+            <%= saldoeditado %>
         </span>        
         </h1>
         <span><small style="padding: 0px 10px; color: #ccc;" id="info">Carregando...</small></span>
@@ -35,7 +31,7 @@
     setTimeout(function(){
         saldo.innerHTML = saldoAtualizado
         info.style.display = 'none'
-    },(1000*60))
+    },(1000))
 </script>
 
 <%- include('./partials/footer.ejs') %>
