@@ -78,34 +78,41 @@ router.get('/home',auth,(request,response)=>{
     ])
 
     //ABRIU
-    await page.waitForSelector(".green");
-    let element = await page.$('.green')
-
-    //pega o valor do saldo
-    let value = await page.evaluate(el => el.textContent, element)
-
-    let saldo = value.replace('$','').replace(' ','')
-    let saldoConvertido = parseFloat(saldo)
-    let novosaldo = Math.round(((saldoConvertido * 0.3333) + saldoConvertido)).toFixed(2).replace('.',',')
-
-    //console.log('Saldo atual real: ' + saldo)
-    //console.log('Saldo atual com 20% a mais: ' + novosaldo.toFixed(2))
-
+    await page.waitForSelector(".row-stat-value");
+    let rows = await page.$$eval('.row-stat-value', el => el.map(data => data.innerHTML))
     await sleep(1000);
     await browser.close();
+    let element = rows[1]
 
-    //console.log(saldo)
 
+    let saldo = element.replace('$','').replace(' ','')
+    let saldoConvertido = parseFloat(saldo)
+    
 
-    response.render('home',{
-        saldoapi:saldo,
-        saldoeditado: novosaldo,
-        saldodb:saldodb
-    })
+    //console.log('Saldo atual real: ' + saldo)
+    //console.log('Saldo atual com 20% a mais: ' + novosaldo.toFixed(2)) */
+
+    //VERIFICA SE O SALDO É NEGATIVO
+    if(saldoConvertido < 0){
+        response.redirect('/saldo-insuficiente')
+    }else{
+        let novosaldo = Math.round(((saldoConvertido * 0.3333) + saldoConvertido)).toFixed(2).replace('.',',')
+
+        response.render('home',{
+            saldoapi:saldo,
+            saldoeditado: novosaldo,
+            saldodb:saldodb
+        })
+        
+    }
+    
+    
 })();
 })
 
-
+router.get('/saldo-insuficiente',(request,response)=>{
+    response.send('Pagina de saldo insuficiente')
+})
 
 router.get('/logout',auth,(request,response)=>{
     request.session.usuario = undefined
