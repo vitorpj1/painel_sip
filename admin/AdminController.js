@@ -6,7 +6,7 @@ const authadmin = require('../middlewares/authadmin')
 const Admin = require('./Admin')
 const Usuario = require('../usuario/Usuario')
 
-router.get('/painel',authadmin,(request,response)=>{
+router.get('/painel',(request,response)=>{
     response.render('admin/painel',{
         usuario:request.session.admin.usuario
     })
