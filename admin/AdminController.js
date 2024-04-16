@@ -6,7 +6,13 @@ const authadmin = require('../middlewares/authadmin')
 const Admin = require('./Admin')
 const Usuario = require('../usuario/Usuario')
 
-router.get('/painel',(request,response)=>{
+router.get('/admin',(request,response)=>{
+    response.render('admin/login')
+})
+
+router.get('/painel',authadmin,(request,response)=>{
+
+    
     response.render('admin/painel',{
         usuario:request.session.admin.usuario
     })
@@ -81,7 +87,7 @@ router.post('/adicionar-saldo',authadmin,(request,response)=>{
 router.get('/logoutadmin',authadmin,(request,response)=>{
     request.session.admin = undefined
 
-    response.redirect('/painel')
+    response.redirect('/admin')
 })
 
 module.exports = router
