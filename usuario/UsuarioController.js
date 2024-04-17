@@ -48,6 +48,9 @@ router.get('/home',auth,(request,response)=>{
         let saldodb = usuariodb.saldo
         let login = usuario.usuariosip
         let senha = usuario.senhasip
+        let saldoinicialcomacrecimo = usuariodb.saldoinicialcomacrecimo
+        let saldoinicialbanco = usuariodb.saldoinicialsemacrecimo
+        let saldoinicialsemacrecimo = parseFloat(saldoinicialbanco)
 
     const browser = await pup.launch(
         {
@@ -83,27 +86,40 @@ router.get('/home',auth,(request,response)=>{
     await sleep(1000);
     await browser.close();
     let element = rows[1]
+
+    
+
     let saldo = element.replace('$','').replace(' ','')
     let saldoeditadoo =  saldo.replace('.','').replace(',','.')
-    let saldoconvertido = parseFloat(saldoeditadoo)   
-    let saldoConvertido = parseFloat(saldo)
-    let acrescimo = (saldoconvertido + ( saldoconvertido * 0.3333))
-    let valorfinal = acrescimo.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+    let api = parseFloat(saldoeditadoo)   
+    
     //VERIFICA SE O SALDO É NEGATIVO
-    if(saldoConvertido < 0){
-        response.redirect('/saldo-insuficiente')
+    if(api < 0){
+        response.redirect('/saldo-insuficiente') 
     }else{
+
+        //api
+        //apimais
+        let apimais = (api + (api * 0.3333)).toFixed(2)
+        //saldogasto
+        let saldogasto = (parseFloat(saldoinicialsemacrecimo) - api)
+        //saldogasto60
+        let saldogasto60 = saldogasto + ( saldogasto * 0.6666)
+        //diferencasaldo
+        let diferencasaldo = parseFloat((apimais - saldogasto60 )) 
+        //saldoparaexibir
+        let saldoparaexibir = diferencasaldo
         response.render('home',{
-            saldoapi:saldo,
-            saldoeditado: valorfinal,
-            saldodb:saldodb
+            api:api,
+            saldoparaexibir:saldoparaexibir,
+            saldoinicialsemacrecimo: saldoinicialsemacrecimo
         })        
     }
 })();
 })
 
 router.get('/saldo-insuficiente',(request,response)=>{
-    response.send('Pagina de saldo insuficiente')
+    response.render('saldo-insuficiente')
 })
 
 router.get('/logout',auth,(request,response)=>{

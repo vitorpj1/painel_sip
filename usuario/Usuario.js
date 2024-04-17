@@ -25,10 +25,18 @@ const Usuario = connection.define('usuarios',{
     senhasip:{
         type: Sequelize.STRING,
         allowNull:false
+    },
+    saldoinicialsemacrecimo:{
+        type: Sequelize.STRING,
+        allowNull:false
+    },
+    saldoinicialcomacrecimo:{
+        type: Sequelize.STRING,
+        allowNull:false
     }
 })
 
 Usuario.sync({force:false}).then(()=>{
-    console.log('tabela criada')
+    console.log('tabela usuario criada')
 })
 module.exports = Usuario
