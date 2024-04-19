@@ -31,7 +31,7 @@
 
 
     setTimeout(function(){
-        saldo.innerHTML = saldoAtualizado
+        saldo.innerHTML = saldoAtualizado.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})
         info.style.display = 'none'
     },(1))
 </script>
