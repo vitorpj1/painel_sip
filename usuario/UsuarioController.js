@@ -109,6 +109,7 @@ router.get('/home',auth,(request,response)=>{
         let diferencasaldo = parseFloat((apimais - saldogasto60 )) 
         //saldoparaexibir
         let saldoparaexibir = diferencasaldo
+        saldoparaexibir.toFixed(2)
         response.render('home',{
             api:api,
             saldoparaexibir:saldoparaexibir,
