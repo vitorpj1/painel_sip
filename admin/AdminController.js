@@ -59,8 +59,8 @@ router.post('/criar-usuario',authadmin,(request,response)=>{
         senhasip:senhasip,
         saldo:'',
         ultimogasto:'',
-        saldoinicialsemacrecimo:'',
-        saldoinicialcomacrecimo:''        
+        saldoinicialsemacrecimo:0,
+        saldoinicialcomacrecimo:0        
     }).then(()=>{
         response.redirect('/painel')
     })
