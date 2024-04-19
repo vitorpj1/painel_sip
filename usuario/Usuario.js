@@ -4,11 +4,11 @@ const connection = require('../database/database')
 const Usuario = connection.define('usuarios',{
     usuario:{
         type: Sequelize.STRING,
-        allowNull:false
+        allowNull:true
     },
     senha:{
         type: Sequelize.STRING,
-        allowNull:false
+        allowNull:true
     },
     saldo:{
         type: Sequelize.STRING,
@@ -20,19 +20,19 @@ const Usuario = connection.define('usuarios',{
     },
     usuariosip:{
         type: Sequelize.STRING,
-        allowNull:false
+        allowNull:true
     },
     senhasip:{
         type: Sequelize.STRING,
-        allowNull:false
+        allowNull:true
     },
     saldoinicialsemacrecimo:{
         type: Sequelize.STRING,
-        allowNull:false
+        allowNull:true
     },
     saldoinicialcomacrecimo:{
         type: Sequelize.STRING,
-        allowNull:false
+        allowNull:true
     }
 })
 
