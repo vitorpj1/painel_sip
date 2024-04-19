@@ -111,7 +111,7 @@ router.get('/home',auth,(request,response)=>{
         let saldoparaexibir = diferencasaldo
         response.render('home',{
             api:api,
-            saldoparaexibir:diferencasaldo,
+            saldoparaexibir:diferencasaldo.replace('.',','),
             saldoinicialsemacrecimo: saldoinicialsemacrecimo
         })        
     }
