@@ -112,7 +112,7 @@ router.get('/home',auth,(request,response)=>{
         let saldoparaexibireditado = saldoparaexibir.toFixed(2)
         response.render('home',{
             api:api,
-            saldoparaexibir:saldoparaexibir,
+            saldoparaexibir:saldoparaexibireditado,
             saldoinicialsemacrecimo: saldoinicialsemacrecimo
         })        
     }
