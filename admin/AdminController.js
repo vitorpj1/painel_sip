@@ -56,7 +56,11 @@ router.post('/criar-usuario',authadmin,(request,response)=>{
         usuario:usuario,
         senha:senha,
         usuariosip:usuariosip,
-        senhasip:senhasip
+        senhasip:senhasip,
+        saldo:'',
+        ultimogasto:'',
+        saldoinicialsemacrecimo:0,
+        saldoinicialcomacrecimo:0        
     }).then(()=>{
         response.redirect('/painel')
     })
@@ -69,15 +73,17 @@ router.get('/adicionar-saldo',authadmin,(request,response)=>{
 router.post('/adicionar-saldo',authadmin,(request,response)=>{
     let usuario = request.body.usuario
     let saldo = request.body.saldo
-    
-    Usuario.update({saldo:saldo},{
+
+    let saldomodificado = saldo.replaceAll('.','').replaceAll(',','.')
+
+    Usuario.update({saldoinicialsemacrecimo:saldomodificado},{
         where:{
             usuario:usuario
         }
     }).then(()=>{
         response.redirect('/painel')
     }).catch((error)=>{
-        response.redirect('/painel')
+        response.json(error)
     })
 
     
