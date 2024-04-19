@@ -8,7 +8,7 @@
 <div class="row">
     <div class="element">
         <p style="color:#aaa">SALDO</p>
-        <h1 style="color: #25D398;">  R$ <span id="saldo"> 
+        <h1 style="color: #25D398;">  <span id="saldo"> 
             <% if(saldoparaexibir < saldoinicialsemacrecimo ){ %>    
                <%=api%>
             <% }else{ %>
@@ -33,7 +33,7 @@
     setTimeout(function(){
         saldo.innerHTML = saldoAtualizado
         info.style.display = 'none'
-    },(1000))
+    },(30000))
 </script>
 
 <%- include('./partials/footer.ejs') %>
